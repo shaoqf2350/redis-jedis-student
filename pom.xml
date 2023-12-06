@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.14</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.sqf</groupId>
+    <artifactId>redis-jedis-student</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!--父工程的打包方式必须为pom-->
+    <packaging>pom</packaging>
+
+    <!--子模块-->
+    <modules>
+        <module>redis-springboot</module>
+    </modules>
+
+    <!--统一管理jar包版本号-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <junit.version>4.12</junit.version>
+        <log4j.version>1.2.17</log4j.version>
+        <lombok.version>1.16.18</lombok.version>
+
+        <alibaba.fastjson>1.2.78</alibaba.fastjson>
+        <springcloud.netflix.hystrix.version>2.2.10.RELEASE</springcloud.netflix.hystrix.version>
+        <springcloud.netflix.hystrix.javanica.version>1.5.18</springcloud.netflix.hystrix.javanica.version>
+        <springcloud.hystrix.version>2.2.10.RELEASE</springcloud.hystrix.version>
+        <springcloud.hystrix.dashboard.version>2.2.10.RELEASE</springcloud.hystrix.dashboard.version>
+        <springboot.actuator.version>2.2.10.RELEASE</springboot.actuator.version>
+        <springboot.feign.version>1.4.5.RELEASE</springboot.feign.version>
+        <springcloud.eureka.version>2.2.10.RELEASE</springcloud.eureka.version>
+        <springboot.zuul.version>2.2.10.RELEASE</springboot.zuul.version>
+    </properties>
+
+    <!--声明依赖jar包和指定版本，并不实现引入，由子项目进行引入，子项目如果不指定版本则使用父项目申明的版本，也可以指定版本进行覆盖-->
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${alibaba.fastjson}</version>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
